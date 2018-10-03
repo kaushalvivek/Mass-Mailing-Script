@@ -1,27 +1,33 @@
-#READ_ME 
+# READ_ME 
 
 Before sending a new mass email, do the following:
 
 ## Changes to Content files and Attachements
 
-1.```salutation.txt``` Enter text to be written before name of sender in file content1.txt
-> For example:
-> 
-> Hi Jane Doe,
->
-> Here, 'Hi<space>' will be the content in content1.txt
+1.```salutation.txt``` Enter text to be written before name of sender here.  
+For example:
+```html
+Hi Jane Doe,
 
-2.```body.txt``` Enter whatever follows name of sender (comma, return, body of email and salutation) in HTML format in cotent2.txt
-> For example:
-> ,
->
->Greetings from E-Cell IIIT Hyderabad!
->
-> We are .... (body)
+<!--Here, 
 
-*Please note that a comma and a return key after that is necessary to start, as content2.txt is directly after name of sender*
+'Hi<_space_>' 
+will be the content in salutation.txt
 
-3. Paste attachment in same folder. In case of multiple attachments, make a zip.
+--> 
+```
+
+2.```body.txt``` Enter whatever follows name of sender (comma, return, body of email and salutation) in HTML format.  
+For example:
+```html
+,<br/>
+
+<b>Greetings from E-Cell IIIT Hyderabad!</b>
+
+<p>We are .... (body)</p>
+```
+
+Paste attachment in same folder. In case of multiple attachments, make a zip.
 
 ## Format of Mailing List
 
@@ -63,4 +69,3 @@ attachment_path_and_name = "./sample_attachment.jpg"
 - Vivek Kaushal
 - Deepanshu Jain
 - Shivang Nagaria
-
