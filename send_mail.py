@@ -23,9 +23,9 @@ target_csv = 'target.csv'
 email_id = ''
 iden = ''
 psswrd = ''
-SMTP = ''
+SMTP_server = ''
 
-subject = "Test Mail"
+subject = ""
 attachment_path_and_name = "./sample_attachment.jpg"
 
 ########################################
@@ -50,7 +50,7 @@ mail_details = {
         'email' : email_id,
         'identity': iden,
         'password' : psswrd,
-        'SMTP-server' : SMTP
+        'SMTP-server' : SMTP_server
         }
 
 def SEND_MAIL(name, to_EMAIL, attachment):
