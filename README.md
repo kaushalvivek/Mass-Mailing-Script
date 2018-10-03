@@ -1,4 +1,4 @@
-# READ_ME 
+# Mass Mailing Script
 
 Before sending a new mass email, do the following:
 
@@ -32,10 +32,12 @@ Paste attachment in same folder. In case of multiple attachments, make a zip.
 ## Format of Mailing List
 
 1. CSV file format.
-2. Fields should be exactly similar as in the given ```target.csv```.
-> Example: 
-> S.No, Name, email,
-> S.No, Name, email,
+2. Fields should be exactly similar as in the given ```target.csv```.  
+Example: 
+```
+S.No, Name, email,
+S.No, Name, email,
+```
 
 ## Modifications in script before sending:
 
