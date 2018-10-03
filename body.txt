@@ -2,28 +2,12 @@
 
 <!--This part of the content contains everything after the salutation-->
 
-<p>E-Cell IIIT Hyderabad is partnering with Entrepreneur India for the <strong>15</strong><strong>th</strong><strong> annual</strong>&nbsp;<strong>Entrepreneur Start-up Summit, 2018 scheduled on May 19-20 2018 at HITEX Exhibition Centre, Hyderabad</strong></p>
-<p>This 2 day event will be packed with perspective building insight, training, coaching and mentoring for businesses during their critical start-up years and getting ready to take up growth challenge. The forum will focus on inspiring and educating young startups and entrepreneurs. &nbsp;</p>
-<p>Being held in its 15th year, empowered by <strong>Entrepreneur Magazine</strong> &ndash; The elite gathering of Young and Established Entrepreneurs will set precedent on:</p>
-<ul>
-<li><strong>Transforming Entrepreneurship- Achieving Speed &amp; Scalability through Funding</strong></li>
-<li><strong>Starting Small, Thinking Big: How to Think Big, Aim High to Grow your Business</strong></li>
-<li><strong>Money 101: Debt, Bank Capital &amp; &nbsp;Alternative Lending Mechanism</strong></li>
-<li><strong>The art of positioning your Brand through Franchising</strong></li>
-<li><strong>How Gen Next Entrepreneurs are disrupting traditional paradigms by innovation &amp; reinvention in family businesses</strong></li>
-<li><strong>The New &amp; Next of Consumer Business: Retail, Food &amp; Wellness</strong></li>
-</ul>
-<p><strong>Standard Delegate Fee: </strong>INR 12,000 per individual.&nbsp;&nbsp;We are offering a discount fee of INR 5000 for all <strong>Students</strong> (On presentation of valid student id)&nbsp;. This participation fee includes entrance to the conference, exhibition, tea-coffee &amp; lunch for both the days.</p>
-<p><strong>For Registration and Payment Methods please</strong><strong> refer the attached document.</strong></p>
-<p>Looking forward to welcoming you to the summit.</p>
+<p> Enter the body in whatever HTML format you wish to.</p>
 
 <p>
 
 <!--The following portion contains the signature,-->
 
-Regards,<br/>
-Entrepreneurship Cell<br/>
-IIIT Hyderabad
-</p><p>
-<a href="https://ecell.iiit.ac.in/">Website</a> | <a href="https://www.facebook.com/ecell.iiithyd">Facebook</a>
+Signature here.
+
 </p>

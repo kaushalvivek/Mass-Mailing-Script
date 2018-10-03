@@ -66,7 +66,13 @@ attachment_path_and_name = "./sample_attachment.jpg"
 ## General Instructions:
 
 1. Send a mail to yourself first using the script before blasting it on mailing lists.
-3. If you need any help, create an issue.
+2. If you need any help, create an issue.
+3. To run, post configuration:
+
+```python
+python send_mail.py
+```
+
 
 **Coded by:**
 - Vivek Kaushal
