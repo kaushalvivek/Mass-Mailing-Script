@@ -21,6 +21,7 @@ final_data = []
 target_csv = 'target.csv'
 
 email_id = ''
+# Enter your name/organisation name for iden
 iden = ''
 psswrd = ''
 SMTP_server = ''

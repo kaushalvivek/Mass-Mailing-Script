@@ -51,6 +51,7 @@ Enter details in the IMPORTANT CONSTANT section in the script, support for text 
 target_csv = 'target.csv'
 
 email_id = ''
+# Enter your name/organisation name for iden
 iden = ''
 psswrd = ''
 SMTP_server = ''
