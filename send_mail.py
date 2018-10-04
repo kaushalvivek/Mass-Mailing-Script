@@ -1,5 +1,6 @@
 from __future__ import print_function
 import time
+import sys
 
 # Import smtplib for the actual sending function
 import smtplib
@@ -14,6 +15,12 @@ import pdb
 
 final_data = []
 
+if sys.argv[1]:
+	psswrd = sys.argv[1]
+else:
+    print ("ERROR : Enter password with command.\n python send_mail.py PASSWORD_HERE\n")
+
+
 ########################################
 
 # IMPORTANT CONSTANTS
@@ -23,7 +30,6 @@ target_csv = 'target.csv'
 email_id = ''
 # Enter your name/organisation name for iden
 iden = ''
-psswrd = ''
 SMTP_server = ''
 
 subject = ""

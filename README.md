@@ -53,7 +53,6 @@ target_csv = 'target.csv'
 email_id = ''
 # Enter your name/organisation name for iden
 iden = ''
-psswrd = ''
 SMTP_server = ''
 
 subject = ""
@@ -67,14 +66,13 @@ attachment_path_and_name = "./sample_attachment.jpg"
 
 1. Send a mail to yourself first using the script before blasting it on mailing lists.
 2. If you need any help, create an issue.
-3. To run, post configuration:
+3. To run, post configuration, enter the following with your email account password:
 
 ```python
-python send_mail.py
+python send_mail.py PASSWORD_HERE
 ```
 
 
 **Coded by:**
 - Vivek Kaushal
 - Deepanshu Jain
-- Shivang Nagaria
