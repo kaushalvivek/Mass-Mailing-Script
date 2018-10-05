@@ -20,12 +20,23 @@ will be the content in salutation.txt
 2.```body.txt``` Enter whatever follows name of sender (comma, return, body of email and salutation) in HTML format.  
 For example:
 ```html
+ ,<br/>
 
-,<br/>
+<!--This part of the content contains everything after the salutation-->
 
-<b>Greetings from E-Cell IIIT Hyderabad!</b>
+<p> 
 
-<p>We are .... (body)</p>
+    Enter the body in whatever HTML format you wish to.
+
+</p>
+
+<p>
+
+    <!--The following portion contains the signature-->
+
+    Signature here.
+
+</p>
 ```
 
 3.```Attachments``` Configure attachement path and file name in ```IMPORTANT CONSTANTS.```
@@ -59,7 +70,7 @@ attachment_path_and_name = "./sample_attachment.jpg"
 
 Support for a better method will be added soon.
 
-## Format of Mailing List :-
+## Format of Mailing List :
 
 1. CSV file format.
 2. Fields should be exactly similar as in the given ```target.csv```.  
