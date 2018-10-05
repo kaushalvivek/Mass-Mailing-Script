@@ -15,24 +15,32 @@ import pdb
 
 final_data = []
 
-if sys.argv[1]:
-	psswrd = sys.argv[1]
+if len(sys.argv) == 1:
+	print ("\nSYNTAX ERROR\nCorrect Syntax: python send_mail.py MAIL_PASSWORD_HERE\n")
+	quit()
 else:
-    print ("ERROR : Enter password with command.\n python send_mail.py PASSWORD_HERE\n")
+	psswrd = sys.argv[1]
 
 
 ########################################
 
 # IMPORTANT CONSTANTS
 
+# File with e-mail address of targets
 target_csv = 'target.csv'
 
-email_id = ''
-# Enter your name/organisation name for iden
-iden = ''
-SMTP_server = ''
+# Sender E-Mail Address
+email_id = 'batman@justiceleague.org'
 
-subject = ""
+# Enter your name/organisation name for identification
+identification = 'Justice League Inc.'
+
+# Mailing Server
+SMTP_server = 'mail.justiceleague.org'
+
+# Mail's Subject
+subject = "Resignition Citing Lack of Superpowers"
+
 attachment_path_and_name = "./sample_attachment.jpg"
 
 ########################################
@@ -55,7 +63,7 @@ def get_data():
 
 mail_details = {
 		'email' : email_id,
-		'identity': iden,
+		'identity': identification,
 		'password' : psswrd,
 		'SMTP-server' : SMTP_server
 		}
@@ -121,3 +129,4 @@ if __name__=="__main__":
 			time.sleep(5)
 		else:
 			time.sleep(1)
+	print("All Done!")
