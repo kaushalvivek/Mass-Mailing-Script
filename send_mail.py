@@ -108,10 +108,11 @@ def SEND_MAIL(name, to_EMAIL, attachment):
 	s.quit()
 
 
-def print_wait():
+def wait():
 	print("\n#########################################################")
-	print("###########   SLOW DOWN! Give me 5 seconds.   ###########")
+	print("#############   SLOW DOWN! Give me a minute.   ###########")
 	print("#########################################################\n")
+	time.sleep(60)
 	return
 
 if __name__=="__main__":
@@ -121,12 +122,10 @@ if __name__=="__main__":
 		try:
 			SEND_MAIL(data['name'], data['email'], data['attachment'])
 		except (smtplib.SMTPRecipientsRefused), err:
-			print_wait()
-			time.sleep(69)
+			wait()
 			continue
 		if not i%100 and i!=0:
-			print_wait()
-			time.sleep(5)
+			wait()
 		else:
-			time.sleep(1)
+			time.sleep(2)
 	print("All Done!")
