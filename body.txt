@@ -1,3 +1,0 @@
-Hi {name},
-
-I hope you're well. I am reaching out to inform you that {this} is changing to {that}.
