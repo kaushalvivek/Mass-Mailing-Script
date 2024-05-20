@@ -1,131 +1,58 @@
-from __future__ import print_function
-import time
-import sys
-
-# Import smtplib for the actual sending function
 import smtplib
+import csv
+import argparse
+import yaml
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from tqdm import tqdm
 
-# For guessing MIME type
-import mimetypes
+with open('config.yaml', 'r') as config_file:
+    config = yaml.safe_load(config_file)
 
-# Import the email modules we'll need
-import email
-import email.mime.application
-import pdb
+EMAIL = config['email']
+PASSWORD = config['password']
+IDENTIFICATION = config['identification']
+SMTP_SERVER = config['smtp']
 
-final_data = []
+parser = argparse.ArgumentParser(description='Process email details.')
+parser.add_argument('--subject', required=True, help='Subject of the email')
+parser.add_argument('--template', required=True, help='Path to the email template file')
+parser.add_argument('--csv', required=True, help='Path to the CSV file with recipient data')
 
-if len(sys.argv) == 1:
-	print ("\nSYNTAX ERROR\nCorrect Syntax: python send_mail.py MAIL_PASSWORD_HERE\n")
-	quit()
-else:
-	psswrd = sys.argv[1]
-
-
-########################################
-
-# IMPORTANT CONSTANTS
-
-# File with e-mail address of targets
-target_csv = 'target.csv'
-
-# Sender E-Mail Address
-email_id = 'batman@justiceleague.org'
-
-# Enter your name/organisation name for identification
-identification = 'Justice League Inc.'
-
-# Mailing Server
-SMTP_server = 'mail.justiceleague.org'
+args = parser.parse_args()
 
 # Mail's Subject
-subject = "Resignition Citing Lack of Superpowers"
+subject = args.subject
 
-attachment_path_and_name = "./sample_attachment.jpg"
+def get_data(csv_file):
+    with open(csv_file, newline='') as f:
+        reader = csv.DictReader(f)
+        data = [row for row in reader]
+    return data
 
-########################################
+def load_template(template_file):
+    with open(template_file, 'r') as f:
+        template = f.read()
+    return template
 
-def get_data():
-# target.csv contains list of [S.No, Names, Email Addresses]
-	with open(target_csv) as f:
-		data = f.readlines()
-	data = [i.split(',') for i in data]
+def send_email(smtp_client, subject, sender, recipient, content):
+    msg = MIMEMultipart()
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = recipient
+    body = MIMEText(content, 'plain')
+    msg.attach(body)
 
-	fi = []
-	for row in data[1:]:
-		fi.append({
-						'email': row[2],
-						'name': row[1].title(),
-						'attachment': attachment_path_and_name
-					})
-	return fi
+    smtp_client.sendmail(sender, recipient, msg.as_string())
 
+if __name__ == "__main__":
+    data = get_data(args.csv)
+    template = load_template(args.template)
 
-mail_details = {
-		'email' : email_id,
-		'identity': identification,
-		'password' : psswrd,
-		'SMTP-server' : SMTP_server
-		}
+    with smtplib.SMTP(SMTP_SERVER, 587) as server:
+        server.starttls()
+        server.login(EMAIL, PASSWORD)
 
-def SEND_MAIL(name, to_EMAIL, attachment):
-	print("SENDING to %s" %(to_EMAIL))
-	TO_EMAIL = to_EMAIL
-
-	# Create a text/plain message
-	msg = email.mime.Multipart.MIMEMultipart()
-	msg['Subject'] = subject
-	msg['From'] = mail_details['identity'] + " <" + mail_details['email'] + ">"
-	msg['To'] = TO_EMAIL
-	msg.preamble = 'This is a multi-part message in MIME format.'
-
-	
-	# The main body is just another attachment
-	with open('salutation.txt', 'r') as f:
-		salutation = "".join(f.readlines())
-	with open('body.txt', 'r') as f:
-		body = "".join(f.readlines())
-	content = salutation.strip() + " " + name.strip() + body.strip()
-	body = email.mime.Text.MIMEText(content, 'html')
-	msg.attach(body)
-	
-	# Attachment
-	
-	filename=attachment
-	with open("./" + filename) as fp:
-		att = email.mime.application.MIMEApplication(fp.read(),_subtype="jpg")
-	att.add_header('Content-Disposition','attachment',filename=filename)
-	msg.attach(att)
-	
-	# send via Gmail server
-	# NOTE: my ISP, Centurylink, seems to be automatically rewriting
-	# port 25 packets to be port 587 and it is trashing port 587 packets.
-	# So, I use the default port 25, but I authenticate.
-	s = smtplib.SMTP(mail_details['SMTP-server'])
-	s.starttls()
-	s.login(mail_details['email'], mail_details['password'])
-	s.sendmail(mail_details['email'], TO_EMAIL, msg.as_string())
-	s.quit()
-
-
-def wait():
-	print("\n#########################################################")
-	print("#############   SLOW DOWN! Give me a minute.   ###########")
-	print("#########################################################\n")
-	time.sleep(60)
-	return
-
-if __name__=="__main__":
-	final_data = get_data()
-	for i, data in enumerate(final_data):
-		print("%d/%d: "%(i+1, len(final_data)),end="")
-		try:
-			SEND_MAIL(data['name'], data['email'], data['attachment'])
-		except (smtplib.SMTPRecipientsRefused), err:
-			wait()
-			continue
-		if not i%100 and i!=0:
-			wait()
-		else:
-			time.sleep(2)
-	print("All Done!")
+        for row in tqdm(data, desc="Sending emails"):
+            content = template.format(**row)
+            send_email(server, subject, f"{IDENTIFICATION}<{EMAIL}>", row['email'], content)
